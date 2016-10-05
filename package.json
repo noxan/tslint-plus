@@ -4,7 +4,8 @@
   "description": "Experimental extra rules for tslint.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "author": "Richard <hello@noxan.net>",
   "license": "MIT",
