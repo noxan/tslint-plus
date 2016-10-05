@@ -21,7 +21,7 @@ export class Rule extends Lint.Rules.AbstractRule {
       return [
         new Lint.RuleFailure(
           sourceFile,
-          1,
+          0,
           1,
           Rule.FILE_BEGIN_NEWLINES_FAILURE,
           this.getOptions().ruleName
