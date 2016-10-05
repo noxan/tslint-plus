@@ -23,21 +23,35 @@ class IndentDepthWalker extends Lint.RuleWalker {
   constructor(sourceFile: ts.SourceFile, options: Lint.IOptions) {
     super(sourceFile, options);
 
-    this.numberOfSpaces = this.getOptions()[1] || 2; // default of 2 spaces
+    // TODO: make numberOfSpaces configurable, how to deal with tabs?
+    this.numberOfSpaces = 2; // default of 2 spaces
   }
 
   public visitSourceFile(node: ts.SourceFile) {
     const scanner = ts.createScanner(ts.ScriptTarget.ES5, false, ts.LanguageVariant.Standard, node.text);
 
+    let endOfComment = -1;
     let lastIndentionDepth = 0;
 
-    node.getLineStarts().forEach(lineStart => {
+    for (let lineStart of node.getLineStarts()) {
+      if (lineStart < endOfComment) {
+        // skip checking lines inside multi-line comments
+        continue;
+      }
+
       scanner.setTextPos(lineStart);
 
       let currentScannedType = scanner.scan();
       let fullLeadingWhitespace = '';
+      let lastStartPos = -1;
 
       while (currentScannedType === ts.SyntaxKind.WhitespaceTrivia) {
+        const startPos = scanner.getStartPos();
+        if (startPos === lastStartPos) {
+          break;
+        }
+        lastStartPos = startPos;
+
         fullLeadingWhitespace += scanner.getTokenText();
         currentScannedType = scanner.scan();
       }
@@ -66,6 +80,6 @@ class IndentDepthWalker extends Lint.RuleWalker {
       }
 
       lastIndentionDepth = indentionDepth;
-    });
+    }
   }
 }
