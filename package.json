@@ -1,6 +1,6 @@
 {
   "name": "tslint-plus",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Experimental extra rules for tslint.",
   "main": "index.js",
   "scripts": {
