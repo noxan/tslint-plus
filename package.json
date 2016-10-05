@@ -1,0 +1,19 @@
+{
+  "name": "tslint-plus",
+  "version": "0.1.0",
+  "description": "Experimental extra rules for tslint.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard <hello@noxan.net>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noxan/tslint-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noxan/tslint-plus/issues"
+  },
+  "homepage": "https://github.com/noxan/tslint-plus#readme"
+}
