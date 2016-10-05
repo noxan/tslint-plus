@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/noxan/tslint-plus/issues"
   },
-  "homepage": "https://github.com/noxan/tslint-plus#readme"
+  "homepage": "https://github.com/noxan/tslint-plus#readme",
+  "devDependencies": {
+    "typescript": "^2.0.3"
+  }
 }
