@@ -16,7 +16,8 @@ export class Rule extends Lint.Rules.AbstractRule {
   public static FILE_BEGIN_NEWLINES_FAILURE = 'No empty newlines on file start.';
 
   public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
-    if (sourceFile.text.startsWith('\n') || sourceFile.text.startsWith('\r')) {
+    const firstChar = sourceFile.text.charAt(0);
+    if (firstChar === '\n' || firstChar === '\r') {
       return [
         new Lint.RuleFailure(
           sourceFile,
